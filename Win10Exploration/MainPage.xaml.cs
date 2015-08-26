@@ -26,6 +26,12 @@ namespace Win10Exploration
         }
         private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
         {
+            AddDeleteItemsContainer?.Items?.Clear();
+            ContentItemsContainer?.Items?.Clear();
+            EdgeUIItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            ReorderItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
@@ -44,6 +50,13 @@ namespace Win10Exploration
 
         private void AddDeleteTransitionButton_Click(object sender, RoutedEventArgs e)
         {
+            NoTransitionItemsContainer?.Items?.Clear();
+            ContentItemsContainer?.Items?.Clear();
+            EdgeUIItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            ReorderItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
+
             for (var i = 0; i < itemsToAddCount; i++)
             {
                 //AddDeleteItemsContainer?.Items?.Add(new Rectangle() { Fill = new SolidColorBrush(Colors.Red), Margin = new Thickness(10), Height = 100, Width = 100 });
@@ -60,6 +73,13 @@ namespace Win10Exploration
 
         private void ContentTransitionButton_Click(object sender, RoutedEventArgs e)
         {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            EdgeUIItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            ReorderItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
+
             for (var i = 0; i < itemsToAddCount; i++)
             {
                 ContentItemsContainer?.Items?.Add(
@@ -76,6 +96,13 @@ namespace Win10Exploration
 
         private void EdgeUITransitionButton_Click(object sender, RoutedEventArgs e)
         {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            ContentItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            ReorderItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
+
             for (var i = 0; i < itemsToAddCount; i++)
             {
                 EdgeUIItemsContainer?.Items?.Add(
@@ -92,6 +119,13 @@ namespace Win10Exploration
 
         private void EntranceTransitionButton_Click(object sender, RoutedEventArgs e)
         {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            ContentItemsContainer?.Items?.Clear();
+            EdgeUIItemsContainer?.Items?.Clear();
+            ReorderItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
+
             for (var i = 0; i < itemsToAddCount; i++)
             {
                 EntranceItemsContainer?.Items?.Add(
@@ -108,6 +142,13 @@ namespace Win10Exploration
 
         private void ReorderTransitionButton_Click(object sender, RoutedEventArgs e)
         {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            ContentItemsContainer?.Items?.Clear();
+            EdgeUIItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
+
             for (var i = 0; i < itemsToAddCount; i++)
             {
                 ReorderItemsContainer?.Items?.Add(
@@ -124,6 +165,13 @@ namespace Win10Exploration
 
         private void RepositionTransitionButton_Click(object sender, RoutedEventArgs e)
         {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            ContentItemsContainer?.Items?.Clear();
+            EdgeUIItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            ReorderItemsContainer?.Items?.Clear();
+
             for (var i = 0; i < itemsToAddCount; i++)
             {
                 RepositionItemsContainer?.Items?.Add(
