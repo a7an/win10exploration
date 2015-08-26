@@ -109,19 +109,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\LandscapeImage1.jpg" />
+    <Content Include="Images\LandscapeImage10.jpg" />
+    <Content Include="Images\LandscapeImage11.jpg" />
     <Content Include="Images\LandscapeImage12.jpg" />
     <Content Include="Images\LandscapeImage13.jpg" />
     <Content Include="Images\LandscapeImage14.jpg" />
     <Content Include="Images\LandscapeImage17.jpg" />
-    <Content Include="Images\LandscapeImage18.jpg" />
-    <Content Include="Images\LandscapeImage19.jpg" />
-    <Content Include="Images\LandscapeImage20.jpg" />
-    <Content Include="Images\LandscapeImage21.jpg" />
-    <Content Include="Images\LandscapeImage22.jpg" />
-    <Content Include="Images\LandscapeImage23.jpg" />
-    <Content Include="Images\LandscapeImage25.jpg" />
+    <Content Include="Images\LandscapeImage0.jpg" />
+    <Content Include="Images\LandscapeImage16.jpg" />
+    <Content Include="Images\LandscapeImage2.jpg" />
+    <Content Include="Images\LandscapeImage15.jpg" />
+    <Content Include="Images\LandscapeImage3.jpg" />
+    <Content Include="Images\LandscapeImage4.jpg" />
+    <Content Include="Images\LandscapeImage5.jpg" />
+    <Content Include="Images\LandscapeImage6.jpg" />
     <Content Include="Images\LandscapeImage7.jpg" />
-    <Content Include="Images\valley.jpg" />
+    <Content Include="Images\LandscapeImage8.jpg" />
+    <Content Include="Images\LandscapeImage9.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

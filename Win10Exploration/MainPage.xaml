@@ -95,57 +95,18 @@
             <StackPanel Margin="20" >
                 <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="NoTransitionButton_Click"/>
                 <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="AddDeleteTransitionButton_Click"/>
+                <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EntranceTransitionButton_Click"/>
                 <Button x:Name="ContentTransitionButton" Content="Content Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ContentTransitionButton_Click"/>
                 <Button x:Name="EdgeUITransitionButton" Content="Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EdgeUITransitionButton_Click"/>
-                <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EntranceTransitionButton_Click"/>
                 <Button x:Name="ReorderTransitionButton" Content="Reorder Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ReorderTransitionButton_Click"/>
                 <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
                 <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,10" Click="ResetButton_Click"/>
             </StackPanel>
             <Grid x:Name="grid" Grid.Column="1" Margin="20">
-                <!--<Image x:Name="Images_LandscapeImage1_jpg" Source="Images/LandscapeImage1.jpg" Stretch="None" VerticalAlignment="Top" d:LayoutOverrides="Width, LeftPosition, RightPosition" HorizontalAlignment="Left" />-->
-
-                <ItemsControl x:Name="rectangleItems" VerticalAlignment="Top" Margin="-10,-10,0,0" Visibility="Collapsed">
-                    <ItemsControl.ItemContainerTransitions>
-                        <TransitionCollection>
-                            <AddDeleteThemeTransition/>
-                            <!--<ContentThemeTransition/>
-                            <EdgeUIThemeTransition/>
-                            <EntranceThemeTransition/>
-                            <ReorderThemeTransition/>
-                            <RepositionThemeTransition/>-->
-                        </TransitionCollection>
-                    </ItemsControl.ItemContainerTransitions>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapGrid Height="400"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
-                </ItemsControl>
-
                 <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
-                    <ItemsControl.ItemContainerTransitions>
-                        <TransitionCollection>
-                            <!--<AddDeleteThemeTransition/>-->
-                            <!--<ContentThemeTransition/>-->
-                            <!--<EdgeUIThemeTransition/>-->
-                            <!--<EntranceThemeTransition/>-->
-                            <!--<ReorderThemeTransition/>-->
-                            <!--<RepositionThemeTransition/>-->
-                        </TransitionCollection>
-                    </ItemsControl.ItemContainerTransitions>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
+                            <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
@@ -153,105 +114,74 @@
                     <ItemsControl.ItemContainerTransitions>
                         <TransitionCollection>
                             <AddDeleteThemeTransition/>
-                            <!--<ContentThemeTransition/>-->
-                            <!--<EdgeUIThemeTransition/>-->
-                            <!--<EntranceThemeTransition/>-->
-                            <!--<ReorderThemeTransition/>-->
-                            <!--<RepositionThemeTransition/>-->
                         </TransitionCollection>
                     </ItemsControl.ItemContainerTransitions>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
+                            <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <ItemsControl x:Name="ContentItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
                     <ItemsControl.ItemContainerTransitions>
                         <TransitionCollection>
-                            <!--<AddDeleteThemeTransition/>-->
                             <ContentThemeTransition/>
-                            <!--<EdgeUIThemeTransition/>-->
-                            <!--<EntranceThemeTransition/>-->
-                            <!--<ReorderThemeTransition/>-->
-                            <!--<RepositionThemeTransition/>-->
                         </TransitionCollection>
                     </ItemsControl.ItemContainerTransitions>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
+                            <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <ItemsControl x:Name="EdgeUIItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
                     <ItemsControl.ItemContainerTransitions>
                         <TransitionCollection>
-                            <!--<AddDeleteThemeTransition/>-->
-                            <!--<ContentThemeTransition/>-->
                             <EdgeUIThemeTransition/>
-                            <!--<EntranceThemeTransition/>-->
-                            <!--<ReorderThemeTransition/>-->
-                            <!--<RepositionThemeTransition/>-->
                         </TransitionCollection>
                     </ItemsControl.ItemContainerTransitions>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
+                            <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <ItemsControl x:Name="EntranceItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
                     <ItemsControl.ItemContainerTransitions>
                         <TransitionCollection>
-                            <!--<AddDeleteThemeTransition/>-->
-                            <!--<ContentThemeTransition/>-->
-                            <!--<EdgeUIThemeTransition/>-->
                             <EntranceThemeTransition/>
-                            <!--<ReorderThemeTransition/>-->
-                            <!--<RepositionThemeTransition/>-->
                         </TransitionCollection>
                     </ItemsControl.ItemContainerTransitions>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
+                            <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <ItemsControl x:Name="ReorderItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
                     <ItemsControl.ItemContainerTransitions>
                         <TransitionCollection>
-                            <!--<AddDeleteThemeTransition/>-->
-                            <!--<ContentThemeTransition/>-->
-                            <!--<EdgeUIThemeTransition/>-->
-                            <!--<EntranceThemeTransition/>-->
                             <ReorderThemeTransition/>
-                            <!--<RepositionThemeTransition/>-->
                         </TransitionCollection>
                     </ItemsControl.ItemContainerTransitions>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
+                            <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <ItemsControl x:Name="RepositionItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
                     <ItemsControl.ItemContainerTransitions>
                         <TransitionCollection>
-                            <!--<AddDeleteThemeTransition/>-->
-                            <!--<ContentThemeTransition/>-->
-                            <!--<EdgeUIThemeTransition/>-->
-                            <!--<EntranceThemeTransition/>-->
-                            <!--<ReorderThemeTransition/>-->
                             <RepositionThemeTransition/>
                         </TransitionCollection>
                     </ItemsControl.ItemContainerTransitions>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
+                            <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-
             </Grid>
         </Grid>
     </SplitView>
