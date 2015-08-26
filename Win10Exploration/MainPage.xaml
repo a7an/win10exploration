@@ -1,0 +1,259 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win10Exploration"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
+    x:Class="Win10Exploration.MainPage"
+    RequestedTheme="Dark"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundTransparentBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="8,4,8,4"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <SplitView Background="{ThemeResource AppBarBackgroundThemeBrush}">
+        <SplitView.Pane>
+            <StackPanel>
+                <Button x:Name="button" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </StackPanel>
+        </SplitView.Pane>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="20" >
+                <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="NoTransitionButton_Click"/>
+                <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="AddDeleteTransitionButton_Click"/>
+                <Button x:Name="ContentTransitionButton" Content="Content Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ContentTransitionButton_Click"/>
+                <Button x:Name="EdgeUITransitionButton" Content="Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EdgeUITransitionButton_Click"/>
+                <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EntranceTransitionButton_Click"/>
+                <Button x:Name="ReorderTransitionButton" Content="Reorder Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ReorderTransitionButton_Click"/>
+                <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
+                <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,10" Click="ResetButton_Click"/>
+            </StackPanel>
+            <Grid x:Name="grid" Grid.Column="1" Margin="20">
+                <!--<Image x:Name="Images_LandscapeImage1_jpg" Source="Images/LandscapeImage1.jpg" Stretch="None" VerticalAlignment="Top" d:LayoutOverrides="Width, LeftPosition, RightPosition" HorizontalAlignment="Left" />-->
+
+                <ItemsControl x:Name="rectangleItems" VerticalAlignment="Top" Margin="-10,-10,0,0" Visibility="Collapsed">
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <AddDeleteThemeTransition/>
+                            <!--<ContentThemeTransition/>
+                            <EdgeUIThemeTransition/>
+                            <EntranceThemeTransition/>
+                            <ReorderThemeTransition/>
+                            <RepositionThemeTransition/>-->
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Height="400"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                    <Rectangle Fill="Red" Width="100" Height="100" Margin="10"/>
+                </ItemsControl>
+
+                <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <!--<AddDeleteThemeTransition/>-->
+                            <!--<ContentThemeTransition/>-->
+                            <!--<EdgeUIThemeTransition/>-->
+                            <!--<EntranceThemeTransition/>-->
+                            <!--<ReorderThemeTransition/>-->
+                            <!--<RepositionThemeTransition/>-->
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <ItemsControl x:Name="AddDeleteItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <AddDeleteThemeTransition/>
+                            <!--<ContentThemeTransition/>-->
+                            <!--<EdgeUIThemeTransition/>-->
+                            <!--<EntranceThemeTransition/>-->
+                            <!--<ReorderThemeTransition/>-->
+                            <!--<RepositionThemeTransition/>-->
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <ItemsControl x:Name="ContentItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <!--<AddDeleteThemeTransition/>-->
+                            <ContentThemeTransition/>
+                            <!--<EdgeUIThemeTransition/>-->
+                            <!--<EntranceThemeTransition/>-->
+                            <!--<ReorderThemeTransition/>-->
+                            <!--<RepositionThemeTransition/>-->
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <ItemsControl x:Name="EdgeUIItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <!--<AddDeleteThemeTransition/>-->
+                            <!--<ContentThemeTransition/>-->
+                            <EdgeUIThemeTransition/>
+                            <!--<EntranceThemeTransition/>-->
+                            <!--<ReorderThemeTransition/>-->
+                            <!--<RepositionThemeTransition/>-->
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <ItemsControl x:Name="EntranceItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <!--<AddDeleteThemeTransition/>-->
+                            <!--<ContentThemeTransition/>-->
+                            <!--<EdgeUIThemeTransition/>-->
+                            <EntranceThemeTransition/>
+                            <!--<ReorderThemeTransition/>-->
+                            <!--<RepositionThemeTransition/>-->
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <ItemsControl x:Name="ReorderItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <!--<AddDeleteThemeTransition/>-->
+                            <!--<ContentThemeTransition/>-->
+                            <!--<EdgeUIThemeTransition/>-->
+                            <!--<EntranceThemeTransition/>-->
+                            <ReorderThemeTransition/>
+                            <!--<RepositionThemeTransition/>-->
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <ItemsControl x:Name="RepositionItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <!--<AddDeleteThemeTransition/>-->
+                            <!--<ContentThemeTransition/>-->
+                            <!--<EdgeUIThemeTransition/>-->
+                            <!--<EntranceThemeTransition/>-->
+                            <!--<ReorderThemeTransition/>-->
+                            <RepositionThemeTransition/>
+                        </TransitionCollection>
+                    </ItemsControl.ItemContainerTransitions>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+
+            </Grid>
+        </Grid>
+    </SplitView>
+
+</Page>
