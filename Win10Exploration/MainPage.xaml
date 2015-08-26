@@ -93,6 +93,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Margin="20" >
+                <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,10" Click="ResetButton_Click"/>
                 <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="NoTransitionButton_Click"/>
                 <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="AddDeleteTransitionButton_Click"/>
                 <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EntranceTransitionButton_Click"/>
@@ -100,7 +101,6 @@
                 <Button x:Name="EdgeUITransitionButton" Content="Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EdgeUITransitionButton_Click"/>
                 <Button x:Name="ReorderTransitionButton" Content="Reorder Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ReorderTransitionButton_Click"/>
                 <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
-                <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,10" Click="ResetButton_Click"/>
             </StackPanel>
             <Grid x:Name="grid" Grid.Column="1" Margin="20">
                 <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
