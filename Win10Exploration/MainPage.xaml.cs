@@ -1,13 +1,17 @@
 ﻿using System;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Shapes;
 
 namespace Win10Exploration
 {
     public sealed partial class MainPage : Page
     {
-        int itemsToAddCount = 8;
+        int itemsToAddCount = 4;
 
         public MainPage()
         {
@@ -35,7 +39,6 @@ namespace Win10Exploration
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
-                //NoTransitionItemsContainer?.Items?.Add(new Rectangle() { Fill = new SolidColorBrush(Colors.Red), Margin = new Thickness(10), Height = 100, Width = 100 });
                 NoTransitionItemsContainer?.Items?.Add(
                     new Image()
                     {
@@ -43,7 +46,7 @@ namespace Win10Exploration
                         {
                             UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
                         },
-                        Margin = new Thickness(0, 0, 10, 10)
+                        Margin = new Thickness(4)
                     });
             }
         }
@@ -59,14 +62,16 @@ namespace Win10Exploration
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
-                //AddDeleteItemsContainer?.Items?.Add(new Rectangle() { Fill = new SolidColorBrush(Colors.Red), Margin = new Thickness(10), Height = 100, Width = 100 });
                 AddDeleteItemsContainer?.Items?.Add(
                     new Image()
                     {
                         Source = new BitmapImage()
                         {
                             UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
-                        }, Margin = new Thickness(0,0,10,10)
+                        },
+                        Margin = new Thickness(4),
+                        Width = 200,
+                        Height = 134
                     });
             }
         }
@@ -80,18 +85,7 @@ namespace Win10Exploration
             ReorderItemsContainer?.Items?.Clear();
             RepositionItemsContainer?.Items?.Clear();
 
-            for (var i = 0; i < itemsToAddCount; i++)
-            {
-                ContentItemsContainer?.Items?.Add(
-                    new Image()
-                    {
-                        Source = new BitmapImage()
-                        {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
-                        },
-                        Margin = new Thickness(0, 0, 10, 10)
-                    });
-            }
+            ContentItemsContainer.Visibility = Visibility.Visible;
         }
 
         private void EdgeUITransitionButton_Click(object sender, RoutedEventArgs e)
@@ -112,7 +106,7 @@ namespace Win10Exploration
                         {
                             UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
                         },
-                        Margin = new Thickness(0, 0, 10, 10)
+                        Margin = new Thickness(4)
                     });
             }
         }
@@ -135,7 +129,7 @@ namespace Win10Exploration
                         {
                             UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
                         },
-                        Margin = new Thickness(0, 0, 10, 10)
+                        Margin = new Thickness(4)
                     });
             }
         }
@@ -158,7 +152,7 @@ namespace Win10Exploration
                         {
                             UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
                         },
-                        Margin = new Thickness(0, 0, 10, 10)
+                        Margin = new Thickness(4)
                     });
             }
         }
@@ -181,9 +175,24 @@ namespace Win10Exploration
                         {
                             UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
                         },
-                        Margin = new Thickness(0, 0, 10, 10)
+                        Margin = new Thickness(4)
                     });
             }
+        }
+
+        private void ContentHost_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            // Replace the ContentControl's content with a new Rectangle of a random color.
+            Rectangle newItem = new Rectangle();
+            Random rand = new Random();
+
+            newItem.Height = 200;
+            newItem.Width = 200;
+            newItem.Fill = new SolidColorBrush(Color.FromArgb(255,
+                 (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255)));
+
+            var container = sender as ContentControl;
+            container.Content = newItem;
         }
     }
 }
