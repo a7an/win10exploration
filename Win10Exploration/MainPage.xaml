@@ -165,18 +165,6 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="ReorderItemsContainer" VerticalAlignment="Top">
-                        <ItemsControl.ItemContainerTransitions>
-                            <TransitionCollection>
-                                <ReorderThemeTransition/>
-                            </TransitionCollection>
-                        </ItemsControl.ItemContainerTransitions>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
                     <Grid x:Name="RepositionItemsGrid" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -207,6 +195,42 @@
                         </ItemsControl>
                         <Button Grid.Column="1" x:Name="RemoveItemButton" Content="Remove Item" Margin="0,0,0,20" HorizontalAlignment="Stretch" Click="RemoveItemButton_Click" VerticalAlignment="Top"/>
                         <Button Grid.Column="1" Grid.Row="1"  x:Name="RemoveItemUsingTransitionButton" Content="Remove Item using Transition" Click="RemoveItemUsingTransitionButton_Click" VerticalAlignment="Top"/>
+                    </Grid>
+                    <Grid x:Name="ReorderItemsGrid" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ItemsControl x:Name="ReorderItemsContainer">
+                            <ItemsControl.ItemContainerTransitions>
+                                <TransitionCollection>
+                                    <RepositionThemeTransition/>
+                                </TransitionCollection>
+                            </ItemsControl.ItemContainerTransitions>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                        <ItemsControl x:Name="ReorderItemsTransitionContainer" Grid.Row="1">
+                            <ItemsControl.ItemContainerTransitions>
+                                <TransitionCollection>
+                                    <ReorderThemeTransition/>
+                                </TransitionCollection>
+                            </ItemsControl.ItemContainerTransitions>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                        <Button Grid.Column="1" x:Name="AddItemButton" Content="Add Item" Margin="0,0,0,20" HorizontalAlignment="Stretch" Click="AddItemButton_Click" VerticalAlignment="Top"/>
+                        <Button Grid.Column="1" Grid.Row="1"  x:Name="AddItemUsingTransitionButton" Content="Add Item using Transition" Click="AddItemUsingTransitionButton_Click" VerticalAlignment="Top"/>
                     </Grid>
                 </Grid>
             </ScrollViewer>
