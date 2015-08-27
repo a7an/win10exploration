@@ -12,6 +12,8 @@ namespace Win10Exploration
     public sealed partial class MainPage : Page
     {
         int itemsToAddCount = 4;
+        Random rand = new Random();
+
 
         public MainPage()
         {
@@ -22,29 +24,31 @@ namespace Win10Exploration
         {
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
-            ContentItemsContainer?.Items?.Clear();
-            EdgeUIItemsContainer?.Items?.Clear();
-            EntranceItemsContainer?.Items?.Clear();
-            ReorderItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-        }
-        private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddDeleteItemsContainer?.Items?.Clear();
-            ContentItemsContainer?.Items?.Clear();
             EdgeUIItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
             ReorderItemsContainer?.Items?.Clear();
             RepositionItemsContainer?.Items?.Clear();
 
+            ContentItemsContainer.Visibility = Visibility.Collapsed;
+        }
+        private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddDeleteItemsContainer?.Items?.Clear();
+            EdgeUIItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            ReorderItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
+            ContentItemsContainer.Visibility = Visibility.Collapsed;
+
             for (var i = 0; i < itemsToAddCount; i++)
             {
+                int random = rand.Next(0, 17);
                 NoTransitionItemsContainer?.Items?.Add(
                     new Image()
                     {
                         Source = new BitmapImage()
                         {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
+                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + random.ToString() + ".jpg", UriKind.Absolute)
                         },
                         Margin = new Thickness(4)
                     });
@@ -54,20 +58,21 @@ namespace Win10Exploration
         private void AddDeleteTransitionButton_Click(object sender, RoutedEventArgs e)
         {
             NoTransitionItemsContainer?.Items?.Clear();
-            ContentItemsContainer?.Items?.Clear();
             EdgeUIItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
             ReorderItemsContainer?.Items?.Clear();
             RepositionItemsContainer?.Items?.Clear();
+            ContentItemsContainer.Visibility = Visibility.Collapsed;
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
+                int random = rand.Next(0, 17);
                 AddDeleteItemsContainer?.Items?.Add(
                     new Image()
                     {
                         Source = new BitmapImage()
                         {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
+                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + random.ToString() + ".jpg", UriKind.Absolute)
                         },
                         Margin = new Thickness(4),
                         Width = 200,
@@ -92,10 +97,10 @@ namespace Win10Exploration
         {
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
-            ContentItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
             ReorderItemsContainer?.Items?.Clear();
             RepositionItemsContainer?.Items?.Clear();
+            ContentItemsContainer.Visibility = Visibility.Collapsed;
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
@@ -115,10 +120,10 @@ namespace Win10Exploration
         {
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
-            ContentItemsContainer?.Items?.Clear();
             EdgeUIItemsContainer?.Items?.Clear();
             ReorderItemsContainer?.Items?.Clear();
             RepositionItemsContainer?.Items?.Clear();
+            ContentItemsContainer.Visibility = Visibility.Collapsed;
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
@@ -138,10 +143,10 @@ namespace Win10Exploration
         {
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
-            ContentItemsContainer?.Items?.Clear();
             EdgeUIItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
             RepositionItemsContainer?.Items?.Clear();
+            ContentItemsContainer.Visibility = Visibility.Collapsed;
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
@@ -161,10 +166,10 @@ namespace Win10Exploration
         {
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
-            ContentItemsContainer?.Items?.Clear();
             EdgeUIItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
             ReorderItemsContainer?.Items?.Clear();
+            ContentItemsContainer.Visibility = Visibility.Collapsed;
 
             for (var i = 0; i < itemsToAddCount; i++)
             {
@@ -184,7 +189,6 @@ namespace Win10Exploration
         {
             // Replace the ContentControl's content with a new Rectangle of a random color.
             Rectangle newItem = new Rectangle();
-            Random rand = new Random();
 
             newItem.Height = 200;
             newItem.Width = 200;
