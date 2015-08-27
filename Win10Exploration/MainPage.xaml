@@ -107,11 +107,11 @@
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
                 <Button x:Name="ContentTransitionButton" Content="Content Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ContentTransitionButton_Click"/>
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
+                <Button x:Name="PaneUITransitionButton" Content="Pane UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="PaneUITransitionButton_Click" />
                 <Button x:Name="EdgeUITransitionButton" Content="Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EdgeUITransitionButton_Click"/>
-                <Button x:Name="PaneUITransitionButton" Content="Pane UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EdgeUITransitionButton_Click"/>
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
-                <Button x:Name="ReorderTransitionButton" Content="Reorder Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ReorderTransitionButton_Click"/>
                 <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
+                <Button x:Name="ReorderTransitionButton" Content="Reorder Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ReorderTransitionButton_Click"/>
             </StackPanel>
             <Rectangle x:Name="RightBorder" HorizontalAlignment="Right" Width="1" Fill="#4CFFFFFF"/>
             <ScrollViewer  Grid.Column="1" Padding="20" VerticalScrollBarVisibility="Auto">
@@ -135,22 +135,13 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="ContentItemsContainer" VerticalAlignment="Top" Visibility="Collapsed" >
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
+
+                    <Grid x:Name="ContentTransitionContainer" Visibility="Collapsed">
+                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" d:LayoutOverrides="Width, Height">
                             <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
                         </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
+
+                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed" Margin="350,50,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" HorizontalAlignment="Left">
                             <ContentControl.ContentTransitions>
                                 <TransitionCollection>
                                     <ContentThemeTransition />
@@ -158,75 +149,10 @@
                             </ContentControl.ContentTransitions>
                             <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
                         </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                    </ItemsControl>
-                    <ItemsControl x:Name="EdgeUIItemsContainer" VerticalAlignment="Top">
-                        <ItemsControl.ItemContainerTransitions>
-                            <TransitionCollection>
-                                <EdgeUIThemeTransition/>
-                            </TransitionCollection>
-                        </ItemsControl.ItemContainerTransitions>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+                        <TextBlock HorizontalAlignment="Left" Text="No Transition" VerticalAlignment="Top" Margin="50,16,0,0" FontSize="21.333"/>
+                        <TextBlock HorizontalAlignment="Left" Text="Content Transition" VerticalAlignment="Top" Margin="350,16,0,0" FontSize="21.333"/>
+                    </Grid>
+
                     <ItemsControl x:Name="EntranceItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemContainerTransitions>
                             <TransitionCollection>
@@ -251,20 +177,46 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="RepositionItemsContainer" VerticalAlignment="Top">
-                        <ItemsControl.ItemContainerTransitions>
-                            <TransitionCollection>
-                                <RepositionThemeTransition/>
-                            </TransitionCollection>
-                        </ItemsControl.ItemContainerTransitions>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+                    <Grid x:Name="RepositionItemsGrid" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ItemsControl x:Name="RepositionItemsContainer">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                        <ItemsControl x:Name="RepositionItemsTransitionContainer" Grid.Row="1">
+                            <ItemsControl.ItemContainerTransitions>
+                                <TransitionCollection>
+                                    <RepositionThemeTransition/>
+                                </TransitionCollection>
+                            </ItemsControl.ItemContainerTransitions>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                        <Button Grid.Column="1" x:Name="RemoveItemButton" Content="Remove Item" Margin="0,0,0,20" HorizontalAlignment="Stretch" Click="RemoveItemButton_Click" VerticalAlignment="Top"/>
+                        <Button Grid.Column="1" Grid.Row="1"  x:Name="RemoveItemUsingTransitionButton" Content="Remove Item using Transition" Click="RemoveItemUsingTransitionButton_Click" VerticalAlignment="Top"/>
+                    </Grid>
                 </Grid>
             </ScrollViewer>
+            <Rectangle x:Name="PaneUiItem" Fill="Green" HorizontalAlignment="Right" Stroke="Black" Width="400" Grid.Column="1" Margin="0,0,-400,0">
+                <Rectangle.Transitions>
+                    <TransitionCollection>
+                        <PaneThemeTransition/>
+                    </TransitionCollection>
+                </Rectangle.Transitions>
+            </Rectangle>
             <Rectangle x:Name="EdgeUiItem" Fill="Blue" HorizontalAlignment="Right" Stroke="Black" Width="200" Grid.Column="1" Margin="0,0,-200,0">
                 <Rectangle.Transitions>
                     <TransitionCollection>
