@@ -116,14 +116,14 @@
             <Rectangle x:Name="RightBorder" HorizontalAlignment="Right" Width="1" Fill="#4CFFFFFF"/>
             <ScrollViewer  Grid.Column="1" Padding="20" VerticalScrollBarVisibility="Auto">
                 <Grid x:Name="grid" >
-                    <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
+                                <WrapGrid Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="AddDeleteItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl x:Name="AddDeleteItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemContainerTransitions>
                             <TransitionCollection>
                                 <AddDeleteThemeTransition/>
@@ -135,7 +135,7 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="ContentItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" Visibility="Collapsed" >
+                    <ItemsControl x:Name="ContentItemsContainer" VerticalAlignment="Top" Visibility="Collapsed" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapGrid Orientation="Horizontal" />
@@ -215,7 +215,7 @@
                             <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
                         </ContentControl>
                     </ItemsControl>
-                    <ItemsControl x:Name="EdgeUIItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl x:Name="EdgeUIItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemContainerTransitions>
                             <TransitionCollection>
                                 <EdgeUIThemeTransition/>
@@ -227,7 +227,7 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="EntranceItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl x:Name="EntranceItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemContainerTransitions>
                             <TransitionCollection>
                                 <EntranceThemeTransition/>
@@ -239,7 +239,7 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="ReorderItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl x:Name="ReorderItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemContainerTransitions>
                             <TransitionCollection>
                                 <ReorderThemeTransition/>
@@ -251,7 +251,7 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <ItemsControl x:Name="RepositionItemsContainer" VerticalAlignment="Top" Margin="-10,-10,0,0" >
+                    <ItemsControl x:Name="RepositionItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemContainerTransitions>
                             <TransitionCollection>
                                 <RepositionThemeTransition/>

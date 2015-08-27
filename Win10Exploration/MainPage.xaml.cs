@@ -41,18 +41,34 @@ namespace Win10Exploration
             RepositionItemsContainer?.Items?.Clear();
             ContentItemsContainer.Visibility = Visibility.Collapsed;
 
+            CreateItems(NoTransitionItemsContainer);
+        }
+
+        private void CreateItems(ItemsControl container)
+        {
             for (var i = 0; i < itemsToAddCount; i++)
             {
                 int random = rand.Next(0, 17);
-                NoTransitionItemsContainer?.Items?.Add(
-                    new Image()
+
+                var item = new Image()
+                {
+                    Source = new BitmapImage()
                     {
-                        Source = new BitmapImage()
-                        {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + random.ToString() + ".jpg", UriKind.Absolute)
-                        },
-                        Margin = new Thickness(4)
-                    });
+                        UriSource = new Uri("ms-appx:///Images/LandscapeImage" + random.ToString() + ".jpg", UriKind.Absolute)
+                    },
+                    Width = 200,
+                    Height = 134
+                };
+
+                var border = new Border()
+                {
+                    BorderBrush = new SolidColorBrush(Color.FromArgb(112, 255, 255, 255)),
+                    BorderThickness = new Thickness(1),
+                    Margin = new Thickness(4)
+                };
+                border.Child = item;
+
+                container?.Items?.Add(border);
             }
         }
 
@@ -65,21 +81,8 @@ namespace Win10Exploration
             RepositionItemsContainer?.Items?.Clear();
             ContentItemsContainer.Visibility = Visibility.Collapsed;
 
-            for (var i = 0; i < itemsToAddCount; i++)
-            {
-                int random = rand.Next(0, 17);
-                AddDeleteItemsContainer?.Items?.Add(
-                    new Image()
-                    {
-                        Source = new BitmapImage()
-                        {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + random.ToString() + ".jpg", UriKind.Absolute)
-                        },
-                        Margin = new Thickness(4),
-                        Width = 200,
-                        Height = 134
-                    });
-            }
+            CreateItems(AddDeleteItemsContainer);
+
         }
 
         private void ContentTransitionButton_Click(object sender, RoutedEventArgs e)
@@ -115,18 +118,7 @@ namespace Win10Exploration
             RepositionItemsContainer?.Items?.Clear();
             ContentItemsContainer.Visibility = Visibility.Collapsed;
 
-            for (var i = 0; i < itemsToAddCount; i++)
-            {
-                EntranceItemsContainer?.Items?.Add(
-                    new Image()
-                    {
-                        Source = new BitmapImage()
-                        {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
-                        },
-                        Margin = new Thickness(4)
-                    });
-            }
+            CreateItems(EntranceItemsContainer);
         }
 
         private void ReorderTransitionButton_Click(object sender, RoutedEventArgs e)
@@ -138,18 +130,7 @@ namespace Win10Exploration
             RepositionItemsContainer?.Items?.Clear();
             ContentItemsContainer.Visibility = Visibility.Collapsed;
 
-            for (var i = 0; i < itemsToAddCount; i++)
-            {
-                ReorderItemsContainer?.Items?.Add(
-                    new Image()
-                    {
-                        Source = new BitmapImage()
-                        {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
-                        },
-                        Margin = new Thickness(4)
-                    });
-            }
+            CreateItems(ReorderItemsContainer);
         }
 
         private void RepositionTransitionButton_Click(object sender, RoutedEventArgs e)
@@ -161,18 +142,7 @@ namespace Win10Exploration
             ReorderItemsContainer?.Items?.Clear();
             ContentItemsContainer.Visibility = Visibility.Collapsed;
 
-            for (var i = 0; i < itemsToAddCount; i++)
-            {
-                RepositionItemsContainer?.Items?.Add(
-                    new Image()
-                    {
-                        Source = new BitmapImage()
-                        {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
-                        },
-                        Margin = new Thickness(4)
-                    });
-            }
+            CreateItems(RepositionItemsContainer);
         }
 
         private void ContentHost_PointerPressed(object sender, PointerRoutedEventArgs e)
