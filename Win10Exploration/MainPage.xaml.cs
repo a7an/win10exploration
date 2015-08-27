@@ -30,6 +30,7 @@ namespace Win10Exploration
             RepositionItemsContainer?.Items?.Clear();
 
             ContentItemsContainer.Visibility = Visibility.Collapsed;
+            EdgeUiItem.Margin = new Thickness(0, 0, -200, 0);
         }
         private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
         {
@@ -102,18 +103,7 @@ namespace Win10Exploration
             RepositionItemsContainer?.Items?.Clear();
             ContentItemsContainer.Visibility = Visibility.Collapsed;
 
-            for (var i = 0; i < itemsToAddCount; i++)
-            {
-                EdgeUIItemsContainer?.Items?.Add(
-                    new Image()
-                    {
-                        Source = new BitmapImage()
-                        {
-                            UriSource = new Uri("ms-appx:///Images/LandscapeImage" + i.ToString() + ".jpg", UriKind.Absolute)
-                        },
-                        Margin = new Thickness(4)
-                    });
-            }
+            EdgeUiItem.Margin = new Thickness(0, 0, 0, 0);
         }
 
         private void EntranceTransitionButton_Click(object sender, RoutedEventArgs e)
