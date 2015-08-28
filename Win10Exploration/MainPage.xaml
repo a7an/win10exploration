@@ -35,13 +35,12 @@
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
                 <Button x:Name="ContentTransitionButton" Content="Content Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ContentTransitionButton_Click"/>
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
-                <Button x:Name="PaneUITransitionButton" Content="Pane UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="PaneUITransitionButton_Click" />
-                <Button x:Name="EdgeUITransitionButton" Content="Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EdgeUITransitionButton_Click"/>
+                <Button x:Name="PaneEdgeUITransitionButton" Content="Pane/Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="PaneEdgeUITransitionButton_Click" />
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
                 <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
             </StackPanel>
             <Rectangle x:Name="RightBorder" HorizontalAlignment="Right" Width="1" Fill="#4CFFFFFF"/>
-            <ScrollViewer  Grid.Column="1" Padding="20" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer  Grid.Column="1" Padding="20" VerticalScrollBarVisibility="Auto" Margin="-2,0,2,0">
                 <Grid x:Name="grid" >
                     <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemsPanel>
@@ -130,20 +129,24 @@
                     </Grid>
                 </Grid>
             </ScrollViewer>
-            <Rectangle x:Name="PaneUiItem" Fill="Green" HorizontalAlignment="Right" Stroke="Black" Width="400" Grid.Column="1" Margin="0,0,-400,0">
-                <Rectangle.Transitions>
-                    <TransitionCollection>
-                        <PaneThemeTransition/>
-                    </TransitionCollection>
-                </Rectangle.Transitions>
-            </Rectangle>
-            <Rectangle x:Name="EdgeUiItem" Fill="Blue" HorizontalAlignment="Right" Stroke="Black" Width="200" Grid.Column="1" Margin="0,0,-200,0">
-                <Rectangle.Transitions>
-                    <TransitionCollection>
-                        <EdgeUIThemeTransition Edge="Right"/>
-                    </TransitionCollection>
-                </Rectangle.Transitions>
-            </Rectangle>
+            <Grid x:Name="PaneUIContainer" Grid.Column="1" Visibility="Collapsed">
+                <Rectangle x:Name="PaneUiItem" Fill="Green" HorizontalAlignment="Right" Stroke="Black" Width="400" Grid.Column="1" Margin="0,0,-400,0">
+                    <Rectangle.Transitions>
+                        <TransitionCollection>
+                            <PaneThemeTransition/>
+                        </TransitionCollection>
+                    </Rectangle.Transitions>
+                </Rectangle>
+                <Rectangle x:Name="EdgeUiItem" Fill="Blue" HorizontalAlignment="Right" Stroke="Black" Width="100" Grid.Column="1" Margin="0,0,-100,0">
+                    <Rectangle.Transitions>
+                        <TransitionCollection>
+                            <EdgeUIThemeTransition Edge="Right"/>
+                        </TransitionCollection>
+                    </Rectangle.Transitions>
+                </Rectangle>
+                <ToggleButton x:Name="PaneUIToggleButton" Content="Toggle Pane UI Transition" VerticalAlignment="Top" Margin="70,20,0,0" Click="PaneUIToggleButton_Click"/>
+                <ToggleButton x:Name="EdgeUIToggleButton" Content="Toggle Edge UI Transition" VerticalAlignment="Top" Margin="70,70,0,0" Click="EdgeUIToggleButton_Click"/>
+            </Grid>
         </Grid>
     </SplitView>
 

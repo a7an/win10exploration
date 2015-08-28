@@ -29,9 +29,7 @@ namespace Win10Exploration
 
             ContentTransitionContainer.Visibility = Visibility.Collapsed;
             RepositionItemsGrid.Visibility = Visibility.Collapsed;
-
-            EdgeUiItem.Margin = new Thickness(0, 0, -200, 0);
-            PaneUiItem.Margin = new Thickness(0, 0, -400, 0);
+            PaneUIContainer.Visibility = Visibility.Collapsed;
         }
 
         private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
@@ -152,18 +150,6 @@ namespace Win10Exploration
             if (container != null) container.Content = newItem;
         }
 
-        private void PaneUITransitionButton_Click(object sender, RoutedEventArgs e)
-        {
-            NoTransitionItemsContainer?.Items?.Clear();
-            AddDeleteItemsContainer?.Items?.Clear();
-            EntranceItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            ContentTransitionContainer.Visibility = Visibility.Collapsed;
-
-            PaneUiItem.Margin = new Thickness(0, 0, 0, 0);
-        }
-
         private void RemoveItemButton_Click(object sender, RoutedEventArgs e)
         {
             if (RepositionItemsContainer.Items != null && RepositionItemsContainer.Items.Count > 0)
@@ -241,6 +227,43 @@ namespace Win10Exploration
                 };
 
                 RepositionItemsTransitionContainer.Items.Insert(itemPosition, border);
+            }
+        }
+
+        private void PaneEdgeUITransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            RepositionItemsContainer?.Items?.Clear();
+            RepositionItemsTransitionContainer?.Items?.Clear();
+            ContentTransitionContainer.Visibility = Visibility.Collapsed;
+            PaneUIContainer.Visibility = Visibility.Visible;
+        }
+
+        private void PaneUIToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var isPaneUIOpen = (bool)PaneUIToggleButton.IsChecked;
+            if (isPaneUIOpen)
+            {
+                PaneUiItem.Margin = new Thickness(0, 0, 0, 0);
+            }
+            else
+            {
+                PaneUiItem.Margin = new Thickness(0, 0, -400, 0);
+            }
+        }
+
+        private void EdgeUIToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var isEdgeUIOpen = (bool)EdgeUIToggleButton.IsChecked;
+            if (isEdgeUIOpen)
+            {
+                EdgeUiItem.Margin = new Thickness(0, 0, 0, 0);
+            }
+            else
+            {
+                EdgeUiItem.Margin = new Thickness(0, 0, -100, 0);
             }
         }
     }
