@@ -10,7 +10,6 @@
                     <!--<SolidColorBrush x:Key="AppBarBackgroundThemeBrush" Color="Black" />-->
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
-
         </ResourceDictionary>
     </Application.Resources>
 

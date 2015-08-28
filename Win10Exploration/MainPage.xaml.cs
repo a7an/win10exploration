@@ -11,8 +11,8 @@ namespace Win10Exploration
 {
     public sealed partial class MainPage : Page
     {
-        int defaultNumItemsToAdd = 4;
-        Random rand = new Random();
+        private const int DefaultNumItemsToAdd = 4;
+        readonly Random rand = new Random();
 
         public MainPage()
         {
@@ -43,7 +43,7 @@ namespace Win10Exploration
             ContentTransitionContainer.Visibility = Visibility.Collapsed;
             RepositionItemsGrid.Visibility = Visibility.Collapsed;
 
-            CreateItems(NoTransitionItemsContainer, defaultNumItemsToAdd);
+            CreateItems(NoTransitionItemsContainer, DefaultNumItemsToAdd);
         }
 
         private void CreateItems(ItemsControl container, int numItemsToAdd)
@@ -52,9 +52,9 @@ namespace Win10Exploration
             {
                 int random = rand.Next(0, 17);
 
-                var item = new Image()
+                var item = new Image
                 {
-                    Source = new BitmapImage()
+                    Source = new BitmapImage
                     {
                         UriSource = new Uri("ms-appx:///Images/LandscapeImage" + random.ToString() + ".jpg", UriKind.Absolute)
                     },
@@ -62,13 +62,13 @@ namespace Win10Exploration
                     Height = 134
                 };
 
-                var border = new Border()
+                var border = new Border
                 {
                     BorderBrush = new SolidColorBrush(Color.FromArgb(112, 255, 255, 255)),
                     BorderThickness = new Thickness(1),
-                    Margin = new Thickness(4)
+                    Margin = new Thickness(4),
+                    Child = item
                 };
-                border.Child = item;
 
                 container?.Items?.Add(border);
             }
@@ -83,7 +83,7 @@ namespace Win10Exploration
             ContentTransitionContainer.Visibility = Visibility.Collapsed;
             RepositionItemsGrid.Visibility = Visibility.Collapsed;
 
-            CreateItems(AddDeleteItemsContainer, defaultNumItemsToAdd);
+            CreateItems(AddDeleteItemsContainer, DefaultNumItemsToAdd);
         }
 
         private void ContentTransitionButton_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace Win10Exploration
             ContentTransitionContainer.Visibility = Visibility.Collapsed;
             RepositionItemsGrid.Visibility = Visibility.Collapsed;
 
-            CreateItems(EntranceItemsContainer, defaultNumItemsToAdd);
+            CreateItems(EntranceItemsContainer, DefaultNumItemsToAdd);
         }
 
         private void RepositionTransitionButton_Click(object sender, RoutedEventArgs e)
@@ -140,15 +140,16 @@ namespace Win10Exploration
         private void ContentHost_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             // Replace the ContentControl's content with a new Rectangle of a random color.
-            Rectangle newItem = new Rectangle();
-
-            newItem.Height = 200;
-            newItem.Width = 200;
-            newItem.Fill = new SolidColorBrush(Color.FromArgb(255,
-                 (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255)));
+            Rectangle newItem = new Rectangle
+            {
+                Height = 200,
+                Width = 200,
+                Fill = new SolidColorBrush(Color.FromArgb(255,
+                    (byte) rand.Next(0, 255), (byte) rand.Next(0, 255), (byte) rand.Next(0, 255)))
+            };
 
             var container = sender as ContentControl;
-            container.Content = newItem;
+            if (container != null) container.Content = newItem;
         }
 
         private void PaneUITransitionButton_Click(object sender, RoutedEventArgs e)
@@ -165,7 +166,7 @@ namespace Win10Exploration
 
         private void RemoveItemButton_Click(object sender, RoutedEventArgs e)
         {
-            if (RepositionItemsContainer.Items.Count > 0)
+            if (RepositionItemsContainer.Items != null && RepositionItemsContainer.Items.Count > 0)
             {
                 int random = rand.Next(0, RepositionItemsContainer.Items.Count);
 
@@ -175,7 +176,7 @@ namespace Win10Exploration
 
         private void RemoveItemUsingTransitionButton_Click(object sender, RoutedEventArgs e)
         {
-            if (RepositionItemsTransitionContainer.Items.Count > 0)
+            if (RepositionItemsTransitionContainer.Items != null && RepositionItemsTransitionContainer.Items.Count > 0)
             {
                 int random = rand.Next(0, RepositionItemsTransitionContainer.Items.Count);
 
@@ -185,15 +186,15 @@ namespace Win10Exploration
 
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
         {
-            if (RepositionItemsContainer.Items.Count > 0)
+            if (RepositionItemsContainer.Items != null && RepositionItemsContainer.Items.Count > 0)
             {
                 int itemPosition = rand.Next(0, RepositionItemsContainer.Items.Count);
 
                 int randomImage = rand.Next(0, 17);
 
-                var item = new Image()
+                var item = new Image
                 {
-                    Source = new BitmapImage()
+                    Source = new BitmapImage
                     {
                         UriSource = new Uri("ms-appx:///Images/LandscapeImage" + randomImage.ToString() + ".jpg", UriKind.Absolute)
                     },
@@ -201,13 +202,13 @@ namespace Win10Exploration
                     Height = 134
                 };
 
-                var border = new Border()
+                var border = new Border
                 {
                     BorderBrush = new SolidColorBrush(Color.FromArgb(112, 255, 255, 255)),
                     BorderThickness = new Thickness(1),
-                    Margin = new Thickness(4)
+                    Margin = new Thickness(4),
+                    Child = item
                 };
-                border.Child = item;
 
                 RepositionItemsContainer.Items.Insert(itemPosition, border);
             }
@@ -215,15 +216,15 @@ namespace Win10Exploration
 
         private void AddItemUsingTransitionButton_Click(object sender, RoutedEventArgs e)
         {
-            if (RepositionItemsTransitionContainer.Items.Count > 0)
+            if (RepositionItemsTransitionContainer.Items != null && RepositionItemsTransitionContainer.Items.Count > 0)
             {
-                int itemPosition = rand.Next(0, RepositionItemsTransitionContainer.Items.Count);
+                var itemPosition = rand.Next(0, RepositionItemsTransitionContainer.Items.Count);
 
-                int random = rand.Next(0, 17);
+                var random = rand.Next(0, 17);
 
-                var item = new Image()
+                var item = new Image
                 {
-                    Source = new BitmapImage()
+                    Source = new BitmapImage
                     {
                         UriSource = new Uri("ms-appx:///Images/LandscapeImage" + random.ToString() + ".jpg", UriKind.Absolute)
                     },
@@ -231,13 +232,13 @@ namespace Win10Exploration
                     Height = 134
                 };
 
-                var border = new Border()
+                var border = new Border
                 {
                     BorderBrush = new SolidColorBrush(Color.FromArgb(112, 255, 255, 255)),
                     BorderThickness = new Thickness(1),
-                    Margin = new Thickness(4)
+                    Margin = new Thickness(4),
+                    Child = item
                 };
-                border.Child = item;
 
                 RepositionItemsTransitionContainer.Items.Insert(itemPosition, border);
             }
