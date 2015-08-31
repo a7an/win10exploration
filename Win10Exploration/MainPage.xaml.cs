@@ -24,6 +24,9 @@ namespace Win10Exploration
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
+            HorizontalEntranceItemsContainer?.Items?.Clear();
+            StaggeringEntranceItemsContainer?.Items?.Clear();
+
             RepositionItemsContainer?.Items?.Clear();
             RepositionItemsTransitionContainer?.Items?.Clear();
 
@@ -78,6 +81,8 @@ namespace Win10Exploration
         {
             AddDeleteItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
+            HorizontalEntranceItemsContainer?.Items?.Clear();
+            StaggeringEntranceItemsContainer?.Items?.Clear();
 
             CreateItems(NoTransitionItemsContainer, DefaultNumItemsToAdd);
         }
@@ -86,18 +91,48 @@ namespace Win10Exploration
         {
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            ContentTransitionContainer.Visibility = Visibility.Collapsed;
-            RepositionItemsGrid.Visibility = Visibility.Collapsed;
+            HorizontalEntranceItemsContainer?.Items?.Clear();
+            StaggeringEntranceItemsContainer?.Items?.Clear();
 
             CreateItems(EntranceItemsContainer, DefaultNumItemsToAdd);
+        }
+
+        private void HorizontalEntranceTransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            StaggeringEntranceItemsContainer?.Items?.Clear();
+
+            CreateItems(HorizontalEntranceItemsContainer, DefaultNumItemsToAdd);
+
+        }
+
+        private void StaggeringEntranceTransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            HorizontalEntranceItemsContainer?.Items?.Clear();
+
+            CreateItems(StaggeringEntranceItemsContainer, DefaultNumItemsToAdd);
+        }
+
+        private void ClearItemsButton_Click(object sender, RoutedEventArgs e)
+        {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
+            HorizontalEntranceItemsContainer?.Items?.Clear();
+            StaggeringEntranceItemsContainer?.Items?.Clear();
         }
 
         private void AddDeleteTransitionButton_Click(object sender, RoutedEventArgs e)
         {
             NoTransitionItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
+            HorizontalEntranceItemsContainer?.Items?.Clear();
+            StaggeringEntranceItemsContainer?.Items?.Clear();
 
             CreateItems(AddDeleteItemsContainer, DefaultNumItemsToAdd);
         }
@@ -249,13 +284,6 @@ namespace Win10Exploration
             {
                 EdgeUiItem.Margin = new Thickness(0, 0, -100, 0);
             }
-        }
-
-        private void ClearItemsButton_Click(object sender, RoutedEventArgs e)
-        {
-            NoTransitionItemsContainer?.Items?.Clear();
-            AddDeleteItemsContainer?.Items?.Clear();
-            EntranceItemsContainer?.Items?.Clear();
         }
     }
 }

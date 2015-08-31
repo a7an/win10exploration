@@ -55,6 +55,8 @@
             <StackPanel x:Name="ListTransitionButtonContainer" Grid.Column="1" Margin="20" Visibility="Collapsed">
                 <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="NoTransitionButton_Click"/>
                 <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="EntranceTransitionButton_Click"/>
+                <Button x:Name="HorizontalEntranceTransitionButton" Content="Horizontal Entrance" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="HorizontalEntranceTransitionButton_Click"/>
+                <Button x:Name="StaggeringEntranceTransitionButton" Content="Staggering Entrance" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="StaggeringEntranceTransitionButton_Click"/>
                 <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="AddDeleteTransitionButton_Click"/>
                 <Button x:Name="ClearItemsButton" Content="Clear Items" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="ClearItemsButton_Click"/>
             </StackPanel>
@@ -71,6 +73,30 @@
                         <ItemsControl.ItemContainerTransitions>
                             <TransitionCollection>
                                 <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </ItemsControl.ItemContainerTransitions>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                    <ItemsControl x:Name="HorizontalEntranceItemsContainer" VerticalAlignment="Top">
+                        <ItemsControl.ItemContainerTransitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition FromVerticalOffset="0" FromHorizontalOffset="27"/>
+                            </TransitionCollection>
+                        </ItemsControl.ItemContainerTransitions>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                    <ItemsControl x:Name="StaggeringEntranceItemsContainer" VerticalAlignment="Top">
+                        <ItemsControl.ItemContainerTransitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition IsStaggeringEnabled="True"/>
                             </TransitionCollection>
                         </ItemsControl.ItemContainerTransitions>
                         <ItemsControl.ItemsPanel>
