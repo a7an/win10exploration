@@ -11,7 +11,7 @@ namespace Win10Exploration
 {
     public sealed partial class MainPage : Page
     {
-        private const int DefaultNumItemsToAdd = 4;
+        private const int DefaultNumItemsToAdd = 3;
         readonly Random rand = new Random();
 
         public MainPage()
@@ -19,7 +19,7 @@ namespace Win10Exploration
             this.InitializeComponent();
         }
 
-        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        private void ResetAll()
         {
             NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
@@ -30,18 +30,12 @@ namespace Win10Exploration
             ContentTransitionContainer.Visibility = Visibility.Collapsed;
             RepositionItemsGrid.Visibility = Visibility.Collapsed;
             PaneUIContainer.Visibility = Visibility.Collapsed;
+            ListTransitionButtonContainer.Visibility = Visibility.Collapsed;
         }
 
-        private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            AddDeleteItemsContainer?.Items?.Clear();
-            EntranceItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            ContentTransitionContainer.Visibility = Visibility.Collapsed;
-            RepositionItemsGrid.Visibility = Visibility.Collapsed;
-
-            CreateItems(NoTransitionItemsContainer, DefaultNumItemsToAdd);
+            ResetAll();
         }
 
         private void CreateItems(ItemsControl container, int numItemsToAdd)
@@ -72,41 +66,19 @@ namespace Win10Exploration
             }
         }
 
-        private void AddDeleteTransitionButton_Click(object sender, RoutedEventArgs e)
+        private void ListTransitionsButton_Click(object sender, RoutedEventArgs e)
         {
-            NoTransitionItemsContainer?.Items?.Clear();
-            EntranceItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            ContentTransitionContainer.Visibility = Visibility.Collapsed;
-            RepositionItemsGrid.Visibility = Visibility.Collapsed;
+            ResetAll();
 
-            CreateItems(AddDeleteItemsContainer, DefaultNumItemsToAdd);
+            ListTransitionButtonContainer.Visibility = Visibility.Visible;
         }
 
-        private void ContentTransitionButton_Click(object sender, RoutedEventArgs e)
+        private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
         {
-            NoTransitionItemsContainer?.Items?.Clear();
             AddDeleteItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            RepositionItemsGrid.Visibility = Visibility.Collapsed;
 
-            ContentTransitionContainer.Visibility = Visibility.Visible;
-        }
-
-        private void EdgeUITransitionButton_Click(object sender, RoutedEventArgs e)
-        {
-            NoTransitionItemsContainer?.Items?.Clear();
-            AddDeleteItemsContainer?.Items?.Clear();
-            EntranceItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            ContentTransitionContainer.Visibility = Visibility.Collapsed;
-            RepositionItemsGrid.Visibility = Visibility.Collapsed;
-
-            EdgeUiItem.Margin = new Thickness(0, 0, 0, 0);
+            CreateItems(NoTransitionItemsContainer, DefaultNumItemsToAdd);
         }
 
         private void EntranceTransitionButton_Click(object sender, RoutedEventArgs e)
@@ -121,14 +93,29 @@ namespace Win10Exploration
             CreateItems(EntranceItemsContainer, DefaultNumItemsToAdd);
         }
 
-        private void RepositionTransitionButton_Click(object sender, RoutedEventArgs e)
+        private void AddDeleteTransitionButton_Click(object sender, RoutedEventArgs e)
         {
             NoTransitionItemsContainer?.Items?.Clear();
-            AddDeleteItemsContainer?.Items?.Clear();
             EntranceItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            ContentTransitionContainer.Visibility = Visibility.Collapsed;
+
+            CreateItems(AddDeleteItemsContainer, DefaultNumItemsToAdd);
+        }
+
+        private void ContentTransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            ResetAll();
+
+            ContentTransitionContainer.Visibility = Visibility.Visible;
+        }
+
+        private void EdgeUITransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            EdgeUiItem.Margin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void RepositionTransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            ResetAll();
 
             RepositionItemsGrid.Visibility = Visibility.Visible;
             CreateItems(RepositionItemsContainer, 24);
@@ -232,12 +219,8 @@ namespace Win10Exploration
 
         private void PaneEdgeUITransitionButton_Click(object sender, RoutedEventArgs e)
         {
-            NoTransitionItemsContainer?.Items?.Clear();
-            AddDeleteItemsContainer?.Items?.Clear();
-            EntranceItemsContainer?.Items?.Clear();
-            RepositionItemsContainer?.Items?.Clear();
-            RepositionItemsTransitionContainer?.Items?.Clear();
-            ContentTransitionContainer.Visibility = Visibility.Collapsed;
+            ResetAll();
+
             PaneUIContainer.Visibility = Visibility.Visible;
         }
 
@@ -265,6 +248,13 @@ namespace Win10Exploration
             {
                 EdgeUiItem.Margin = new Thickness(0, 0, -100, 0);
             }
+        }
+
+        private void ClearItemsButton_Click(object sender, RoutedEventArgs e)
+        {
+            NoTransitionItemsContainer?.Items?.Clear();
+            AddDeleteItemsContainer?.Items?.Clear();
+            EntranceItemsContainer?.Items?.Clear();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Win10Exploration
             //var view = ApplicationView.GetForCurrentView();
             //view.SetPreferredMinSize(new Size(500, 500));
 
-            ApplicationView.PreferredLaunchViewSize = new Size { Width = 1100, Height = 735 };
+            ApplicationView.PreferredLaunchViewSize = new Size { Width = 1110, Height = 735 };
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 
 #if DEBUG

@@ -24,14 +24,16 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Margin="20" >
                 <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,10" Click="ResetButton_Click"/>
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
-                <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="NoTransitionButton_Click"/>
+                <Button x:Name="ListTransitionsButton" Content="List Transitions" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ListTransitionsButton_Click"/>
+                <!--<Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="NoTransitionButton_Click"/>
                 <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EntranceTransitionButton_Click"/>
-                <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="AddDeleteTransitionButton_Click"/>
+                <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="AddDeleteTransitionButton_Click"/>-->
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
                 <Button x:Name="ContentTransitionButton" Content="Content Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ContentTransitionButton_Click"/>
                 <Rectangle Style="{StaticResource SeparatorStyle}"/>
@@ -40,8 +42,14 @@
                 <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
             </StackPanel>
             <Rectangle x:Name="RightBorder" HorizontalAlignment="Right" Width="1" Fill="#4CFFFFFF"/>
-            <ScrollViewer  Grid.Column="1" Padding="20" VerticalScrollBarVisibility="Auto" Margin="-2,0,2,0">
-                <Grid x:Name="grid" >
+            <StackPanel x:Name="ListTransitionButtonContainer" Grid.Column="1" Margin="20" Visibility="Collapsed">
+                <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="NoTransitionButton_Click"/>
+                <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="EntranceTransitionButton_Click"/>
+                <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="AddDeleteTransitionButton_Click"/>
+                <Button x:Name="ClearItemsButton" Content="Clear Items" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="ClearItemsButton_Click"/>
+            </StackPanel>
+            <ScrollViewer  Grid.Column="2" Padding="20" VerticalScrollBarVisibility="Auto" Margin="-2,0,2,0">
+                <Grid>
                     <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -57,7 +65,7 @@
                         </ItemsControl.ItemContainerTransitions>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
+                                <WrapGrid Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
@@ -129,7 +137,7 @@
                     </Grid>
                 </Grid>
             </ScrollViewer>
-            <Grid x:Name="PaneUIContainer" Grid.Column="1" Visibility="Collapsed">
+            <Grid x:Name="PaneUIContainer" Grid.Column="2" Visibility="Collapsed">
                 <Rectangle x:Name="PaneUiItem" Fill="Green" HorizontalAlignment="Right" Stroke="Black" Width="400" Grid.Column="1" Margin="0,0,-400,0">
                     <Rectangle.Transitions>
                         <TransitionCollection>
@@ -144,8 +152,8 @@
                         </TransitionCollection>
                     </Rectangle.Transitions>
                 </Rectangle>
-                <ToggleButton x:Name="PaneUIToggleButton" Content="Toggle Pane UI Transition" VerticalAlignment="Top" Margin="70,20,0,0" Click="PaneUIToggleButton_Click"/>
-                <ToggleButton x:Name="EdgeUIToggleButton" Content="Toggle Edge UI Transition" VerticalAlignment="Top" Margin="70,70,0,0" Click="EdgeUIToggleButton_Click"/>
+                <ToggleButton x:Name="PaneUIToggleButton" Content="Toggle Pane UI Transition" VerticalAlignment="Top" Margin="20,20,0,0" Click="PaneUIToggleButton_Click"/>
+                <ToggleButton x:Name="EdgeUIToggleButton" Content="Toggle Edge UI Transition" VerticalAlignment="Top" Margin="20,70,0,0" Click="EdgeUIToggleButton_Click"/>
             </Grid>
         </Grid>
     </SplitView>
