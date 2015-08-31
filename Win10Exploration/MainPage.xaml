@@ -16,6 +16,16 @@
     </Page.Resources>
 
     <SplitView Background="{ThemeResource AppBarBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="BaseState"/>
+                <VisualState x:Name="ListTransitionState">
+                    <VisualState.Setters>
+                        <Setter Target="ListTransitionButtonContainer.(UIElement.Visibility)" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <SplitView.Pane>
             <StackPanel>
                 <Button x:Name="button" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>

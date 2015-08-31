@@ -30,7 +30,8 @@ namespace Win10Exploration
             ContentTransitionContainer.Visibility = Visibility.Collapsed;
             RepositionItemsGrid.Visibility = Visibility.Collapsed;
             PaneUIContainer.Visibility = Visibility.Collapsed;
-            ListTransitionButtonContainer.Visibility = Visibility.Collapsed;
+
+            VisualStateManager.GoToState(this, "BaseState", true);
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
@@ -68,9 +69,9 @@ namespace Win10Exploration
 
         private void ListTransitionsButton_Click(object sender, RoutedEventArgs e)
         {
-            ResetAll();
+            ResetAll(); 
 
-            ListTransitionButtonContainer.Visibility = Visibility.Visible;
+            VisualStateManager.GoToState(this, "ListTransitionState", true);
         }
 
         private void NoTransitionButton_Click(object sender, RoutedEventArgs e)
