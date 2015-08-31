@@ -13,141 +13,171 @@
             <Setter Property="Fill" Value="#4CFFFFFF"/>
             <Setter Property="StrokeThickness" Value="0"/>
         </Style>
+        <Style x:Key="SplitViewTogglePaneButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="UseSystemFocusVisuals" Value="True" />
+
+            <Setter Property="FontFamily" Value="{ThemeResource SymbolThemeFontFamily}" />
+            <Setter Property="Content" Value="&#xE700;" />
+            <Setter Property="Height" Value="48" />
+            <Setter Property="Width" Value="48" />
+
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="20" />
+            <!--<Setter Property="Template" Value="{StaticResource SplitViewTogglePaneButtonTemplate}" />-->
+        </Style>
     </Page.Resources>
 
-    <SplitView Background="{ThemeResource AppBarBackgroundThemeBrush}">
+    <SplitView x:Name="RootSplitView" Background="{ThemeResource AppBarBackgroundThemeBrush}">
         <SplitView.Pane>
             <StackPanel>
-                <Button x:Name="button" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Button x:Name="ListTransitionButton" Content="List Transitions" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="ListTransitionButton_Click"/>
             </StackPanel>
         </SplitView.Pane>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Margin="20" >
-                <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,10" Click="ResetButton_Click"/>
-                <Rectangle Style="{StaticResource SeparatorStyle}"/>
-                <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="NoTransitionButton_Click"/>
-                <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EntranceTransitionButton_Click"/>
-                <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="AddDeleteTransitionButton_Click"/>
-                <Rectangle Style="{StaticResource SeparatorStyle}"/>
-                <Button x:Name="ContentTransitionButton" Content="Content Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ContentTransitionButton_Click"/>
-                <Rectangle Style="{StaticResource SeparatorStyle}"/>
-                <Button x:Name="PaneEdgeUITransitionButton" Content="Pane/Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="PaneEdgeUITransitionButton_Click" />
-                <Rectangle Style="{StaticResource SeparatorStyle}"/>
-                <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
-            </StackPanel>
-            <Rectangle x:Name="RightBorder" HorizontalAlignment="Right" Width="1" Fill="#4CFFFFFF"/>
-            <ScrollViewer  Grid.Column="1" Padding="20" VerticalScrollBarVisibility="Auto" Margin="-2,0,2,0">
-                <Grid x:Name="grid" >
-                    <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                    <ItemsControl x:Name="EntranceItemsContainer" VerticalAlignment="Top">
-                        <ItemsControl.ItemContainerTransitions>
-                            <TransitionCollection>
-                                <EntranceThemeTransition/>
-                            </TransitionCollection>
-                        </ItemsControl.ItemContainerTransitions>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                    <ItemsControl x:Name="AddDeleteItemsContainer" VerticalAlignment="Top">
-                        <ItemsControl.ItemContainerTransitions>
-                            <TransitionCollection>
-                                <AddDeleteThemeTransition/>
-                            </TransitionCollection>
-                        </ItemsControl.ItemContainerTransitions>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+        <RelativePanel >
+            <RelativePanel x:Name="PageHeader" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" BorderBrush="#4CFFFFFF" BorderThickness="0,0,0,1">
+                <Button x:Name="SplitViewToggle" Style="{StaticResource SplitViewTogglePaneButtonStyle}" Click="SplitViewToggle_Click"/>
+                <TextBlock x:Name="TitleTextBlock" TextWrapping="NoWrap" Text="Windows 10 Animations" RelativePanel.RightOf="SplitViewToggle" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+            </RelativePanel>
+            <Grid RelativePanel.Below="PageHeader" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                    <Grid x:Name="ContentTransitionContainer" Visibility="Collapsed">
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" d:LayoutOverrides="Width, Height">
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
+                <StackPanel Margin="20" Visibility="Collapsed" >
+                    <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,10" Click="ResetButton_Click"/>
+                    <Rectangle Style="{StaticResource SeparatorStyle}"/>
+                    <Button x:Name="NoTransitionButton" Content="No Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="NoTransitionButton_Click"/>
+                    <Button x:Name="EntranceTransitionButton" Content="Entrance Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="EntranceTransitionButton_Click"/>
+                    <Button x:Name="AddDeleteTransitionButton" Content="Add Delete Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="AddDeleteTransitionButton_Click"/>
+                    <Rectangle Style="{StaticResource SeparatorStyle}"/>
+                    <Button x:Name="ContentTransitionButton" Content="Content Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="ContentTransitionButton_Click"/>
+                    <Rectangle Style="{StaticResource SeparatorStyle}"/>
+                    <Button x:Name="PaneEdgeUITransitionButton" Content="Pane/Edge UI Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="PaneEdgeUITransitionButton_Click" />
+                    <Rectangle Style="{StaticResource SeparatorStyle}"/>
+                    <Button x:Name="RepositionTransitionButton" Content="Reposition Transition" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,10" Click="RepositionTransitionButton_Click"/>
+                </StackPanel>
+                <Rectangle x:Name="RightBorder" HorizontalAlignment="Right" Width="1" Fill="#4CFFFFFF"/>
+                <ScrollViewer  Grid.Column="1" Padding="20" VerticalScrollBarVisibility="Auto" Margin="-2,0,2,0">
+                    <Grid>
+                        <Grid x:Name="ListTransitionsContainer">
+                            <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapGrid Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                            <ItemsControl x:Name="EntranceItemsContainer" VerticalAlignment="Top">
+                                <ItemsControl.ItemContainerTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </ItemsControl.ItemContainerTransitions>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapGrid Orientation="Horizontal" ItemWidth="200" ItemHeight="134"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                            <ItemsControl x:Name="AddDeleteItemsContainer" VerticalAlignment="Top">
+                                <ItemsControl.ItemContainerTransitions>
+                                    <TransitionCollection>
+                                        <AddDeleteThemeTransition/>
+                                    </TransitionCollection>
+                                </ItemsControl.ItemContainerTransitions>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapGrid Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </Grid>
+                        <Grid x:Name="ContentTransitionContainer" Visibility="Collapsed">
+                            <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" d:LayoutOverrides="Width, Height">
+                                <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
+                            </ContentControl>
 
-                        <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed" Margin="350,50,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" HorizontalAlignment="Left">
-                            <ContentControl.ContentTransitions>
-                                <TransitionCollection>
-                                    <ContentThemeTransition />
-                                </TransitionCollection>
-                            </ContentControl.ContentTransitions>
-                            <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
-                        </ContentControl>
-                        <TextBlock HorizontalAlignment="Left" Text="No Transition" VerticalAlignment="Top" Margin="50,16,0,0" FontSize="21.333"/>
-                        <TextBlock HorizontalAlignment="Left" Text="Content Transition" VerticalAlignment="Top" Margin="350,16,0,0" FontSize="21.333"/>
+                            <ContentControl Height="200" Width="200" PointerPressed="ContentHost_PointerPressed" Margin="350,50,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" HorizontalAlignment="Left">
+                                <ContentControl.ContentTransitions>
+                                    <TransitionCollection>
+                                        <ContentThemeTransition />
+                                    </TransitionCollection>
+                                </ContentControl.ContentTransitions>
+                                <Rectangle Height="200" Width="200" VerticalAlignment="Top" Fill="Orange"/>
+                            </ContentControl>
+                            <TextBlock HorizontalAlignment="Left" Text="No Transition" VerticalAlignment="Top" Margin="50,16,0,0" FontSize="21.333"/>
+                            <TextBlock HorizontalAlignment="Left" Text="Content Transition" VerticalAlignment="Top" Margin="350,16,0,0" FontSize="21.333"/>
+                        </Grid>
+                        <Grid x:Name="RepositionItemsGrid" Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ItemsControl x:Name="RepositionItemsContainer">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                            <ItemsControl x:Name="RepositionItemsTransitionContainer" Grid.Row="1">
+                                <ItemsControl.ItemContainerTransitions>
+                                    <TransitionCollection>
+                                        <RepositionThemeTransition/>
+                                    </TransitionCollection>
+                                </ItemsControl.ItemContainerTransitions>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                            <StackPanel Grid.Column="1">
+                                <Button x:Name="RemoveItemButton" Content="Remove Item" Margin="0,0,0,20" HorizontalAlignment="Stretch" Click="RemoveItemButton_Click" VerticalAlignment="Top"/>
+                                <Button x:Name="AddItemButton" Content="Add Item" Margin="0,0,0,20" HorizontalAlignment="Stretch" Click="AddItemButton_Click" VerticalAlignment="Top"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Grid.Row="1">
+                                <Button x:Name="RemoveItemUsingTransitionButton" Content="Remove Item using Transition" Click="RemoveItemUsingTransitionButton_Click" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,0,0,20"/>
+                                <Button x:Name="AddItemUsingTransitionButton" Content="Add Item using Transition" Click="AddItemUsingTransitionButton_Click" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,0,0,20"/>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                    <Grid x:Name="RepositionItemsGrid" Visibility="Collapsed">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <ItemsControl x:Name="RepositionItemsContainer">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                        <ItemsControl x:Name="RepositionItemsTransitionContainer" Grid.Row="1">
-                            <ItemsControl.ItemContainerTransitions>
-                                <TransitionCollection>
-                                    <RepositionThemeTransition/>
-                                </TransitionCollection>
-                            </ItemsControl.ItemContainerTransitions>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapGrid Orientation="Horizontal" ItemWidth="100" ItemHeight="67"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                        <StackPanel Grid.Column="1">
-                            <Button x:Name="RemoveItemButton" Content="Remove Item" Margin="0,0,0,20" HorizontalAlignment="Stretch" Click="RemoveItemButton_Click" VerticalAlignment="Top"/>
-                            <Button x:Name="AddItemButton" Content="Add Item" Margin="0,0,0,20" HorizontalAlignment="Stretch" Click="AddItemButton_Click" VerticalAlignment="Top"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1" Grid.Row="1">
-                            <Button x:Name="RemoveItemUsingTransitionButton" Content="Remove Item using Transition" Click="RemoveItemUsingTransitionButton_Click" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,0,0,20"/>
-                            <Button x:Name="AddItemUsingTransitionButton" Content="Add Item using Transition" Click="AddItemUsingTransitionButton_Click" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,0,0,20"/>
-                        </StackPanel>
-                    </Grid>
+                </ScrollViewer>
+                <Grid x:Name="PaneUIContainer" Grid.Column="1" Visibility="Collapsed">
+                    <Rectangle x:Name="PaneUiItem" Fill="Green" HorizontalAlignment="Right" Stroke="Black" Width="400" Grid.Column="1" Margin="0,0,-400,0">
+                        <Rectangle.Transitions>
+                            <TransitionCollection>
+                                <PaneThemeTransition/>
+                            </TransitionCollection>
+                        </Rectangle.Transitions>
+                    </Rectangle>
+                    <Rectangle x:Name="EdgeUiItem" Fill="Blue" HorizontalAlignment="Right" Stroke="Black" Width="100" Grid.Column="1" Margin="0,0,-100,0">
+                        <Rectangle.Transitions>
+                            <TransitionCollection>
+                                <EdgeUIThemeTransition Edge="Right"/>
+                            </TransitionCollection>
+                        </Rectangle.Transitions>
+                    </Rectangle>
+                    <ToggleButton x:Name="PaneUIToggleButton" Content="Toggle Pane UI Transition" VerticalAlignment="Top" Margin="70,20,0,0" Click="PaneUIToggleButton_Click"/>
+                    <ToggleButton x:Name="EdgeUIToggleButton" Content="Toggle Edge UI Transition" VerticalAlignment="Top" Margin="70,70,0,0" Click="EdgeUIToggleButton_Click"/>
                 </Grid>
-            </ScrollViewer>
-            <Grid x:Name="PaneUIContainer" Grid.Column="1" Visibility="Collapsed">
-                <Rectangle x:Name="PaneUiItem" Fill="Green" HorizontalAlignment="Right" Stroke="Black" Width="400" Grid.Column="1" Margin="0,0,-400,0">
-                    <Rectangle.Transitions>
-                        <TransitionCollection>
-                            <PaneThemeTransition/>
-                        </TransitionCollection>
-                    </Rectangle.Transitions>
-                </Rectangle>
-                <Rectangle x:Name="EdgeUiItem" Fill="Blue" HorizontalAlignment="Right" Stroke="Black" Width="100" Grid.Column="1" Margin="0,0,-100,0">
-                    <Rectangle.Transitions>
-                        <TransitionCollection>
-                            <EdgeUIThemeTransition Edge="Right"/>
-                        </TransitionCollection>
-                    </Rectangle.Transitions>
-                </Rectangle>
-                <ToggleButton x:Name="PaneUIToggleButton" Content="Toggle Pane UI Transition" VerticalAlignment="Top" Margin="70,20,0,0" Click="PaneUIToggleButton_Click"/>
-                <ToggleButton x:Name="EdgeUIToggleButton" Content="Toggle Edge UI Transition" VerticalAlignment="Top" Margin="70,70,0,0" Click="EdgeUIToggleButton_Click"/>
             </Grid>
-        </Grid>
+
+        </RelativePanel>
     </SplitView>
 
 </Page>

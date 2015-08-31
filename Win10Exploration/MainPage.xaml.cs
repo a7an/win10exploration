@@ -266,5 +266,15 @@ namespace Win10Exploration
                 EdgeUiItem.Margin = new Thickness(0, 0, -100, 0);
             }
         }
+
+        private void SplitViewToggle_Click(object sender, RoutedEventArgs e)
+        {
+            RootSplitView.IsPaneOpen = !RootSplitView.IsPaneOpen;
+        }
+
+        private void ListTransitionButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ListTransitionsPage));
+        }
     }
 }
