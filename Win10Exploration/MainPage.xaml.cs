@@ -285,5 +285,34 @@ namespace Win10Exploration
                 EdgeUiItem.Margin = new Thickness(0, 0, -100, 0);
             }
         }
+
+        private void FadeAnimationButton_Click(object sender, RoutedEventArgs e)
+        {
+            ResetAll();
+
+            VisualStateManager.GoToState(this, "FadeTransitionState", true);
+        }
+
+        private void FadeInAnimationButton_Click(object sender, RoutedEventArgs e)
+        {
+            FadeInStoryboard.Begin();
+        }
+
+        private void FadeOutAnimationButton_Click(object sender, RoutedEventArgs e)
+        {
+            FadeOutStoryboard.Begin();
+        }
+
+        private void CrossFadeAnimationButton_Click(object sender, RoutedEventArgs e)
+        {
+            CrossFadeStoryboard.Begin();
+        }
+
+        private void CustomAnimationButton_Click(object sender, RoutedEventArgs e)
+        {
+            ResetAll();
+
+            VisualStateManager.GoToState(this, "CustomAnimationState", true);
+        }
     }
 }
