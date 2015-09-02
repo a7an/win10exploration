@@ -20,8 +20,56 @@
             <FadeOutThemeAnimation TargetName="FadeItem" />
         </Storyboard>
         <Storyboard x:Name="CrossFadeStoryboard">
-            <FadeOutThemeAnimation TargetName="FadeItem" />
-            <FadeInThemeAnimation TargetName="FadeItem2" />
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CrossFadeItem1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CrossFadeItem2">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="EasingStoryboard">
+            <DoubleAnimation Duration="0:0:1" To="516.82" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ellipse" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <BounceEase Bounciness="2" Bounces="10" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:1" To="252.297" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="ellipse" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="TransformStoryboard">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="TransformItem">
+                <EasingDoubleKeyFrame KeyTime="0" Value="189"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="558">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="484.881"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="TransformItem">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="360">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="TransformItem">
+                <EasingDoubleKeyFrame KeyTime="0" Value="126"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="208.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="TransformItem">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.739"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="TransformItem">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.739"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
 
@@ -40,7 +88,12 @@
                         <Setter Target="FadeAnimationButtonContainer.(UIElement.Visibility)" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="CustomAnimationState"/>
+                <VisualState x:Name="CustomAnimationState">
+                    <VisualState.Setters>
+                        <Setter Target="CustomAnimationContainer.(UIElement.Visibility)" Value="Visible"/>
+                        <Setter Target="CrossFadeAnimationButtonContainer.(UIElement.Visibility)" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <SplitView.Pane>
@@ -76,6 +129,13 @@
                 <Button x:Name="FadeOutAnimationButton" Content="Fade Out" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="FadeOutAnimationButton_Click"/>
                 <Button x:Name="FadeInAnimationButton" Content="Fade In" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="FadeInAnimationButton_Click"/>
             </StackPanel>
+            <StackPanel x:Name="CrossFadeAnimationButtonContainer" Grid.Column="1" Margin="20" Visibility="Collapsed">
+                <Button x:Name="CrossFadeAnimationButton" Content="Cross Fade" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="CrossFadeAnimationButton_Click"/>
+                <Button x:Name="RenderTransofrmAnimationButton" Content="Render Transform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="RenderTransofrmAnimationButton_Click" />
+                <Button x:Name="EaseAnimationButton" Content="Bounce Ease" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Margin="0,0,0,20" Click="EaseAnimationButton_Click" />
+
+            </StackPanel>
+
             <ScrollViewer  Grid.Column="2" Padding="20" VerticalScrollBarVisibility="Auto" Margin="-2,0,2,0">
                 <Grid>
                     <ItemsControl x:Name="NoTransitionItemsContainer" VerticalAlignment="Top">
@@ -189,6 +249,24 @@
                     </Grid>
                     <Grid x:Name="FadeTransitionContainer" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <Image x:Name="FadeItem" Height="134" Grid.Column="1" Width="200" Source="Images/LandscapeImage16.jpg" VerticalAlignment="Top"/>
+                    </Grid>
+                    <Grid x:Name="CustomAnimationContainer" Visibility="Collapsed" >
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Image x:Name="CrossFadeItem1" Height="134" Width="200" Source="Images/LandscapeImage17.jpg" />
+                            <Image x:Name="CrossFadeItem2" Height="134" Width="200" Source="Images/LandscapeImage15.jpg" Opacity="0" />
+                        </Grid>
+                        <Image x:Name="TransformItem" Height="134" Width="200" Source="Images/LandscapeImage1.jpg" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top" d:LayoutOverrides="Width, Height, LeftMargin, RightMargin" RenderTransformOrigin="0.5,0.5" >
+                            <Image.RenderTransform>
+                                <CompositeTransform/>
+                            </Image.RenderTransform>
+                        </Image>
+
+                        <Ellipse x:Name="ellipse" Fill="#FF00FF3A"  Width="100" Margin="230,0,0,0" Stroke="Black" RenderTransformOrigin="0.5,0.5" Height="99" VerticalAlignment="Top" HorizontalAlignment="Left" d:LayoutOverrides="Width">
+                            <Ellipse.RenderTransform>
+                                <CompositeTransform/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+
                     </Grid>
                 </Grid>
             </ScrollViewer>

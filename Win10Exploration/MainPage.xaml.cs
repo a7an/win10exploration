@@ -314,5 +314,15 @@ namespace Win10Exploration
 
             VisualStateManager.GoToState(this, "CustomAnimationState", true);
         }
+
+        private void RenderTransofrmAnimationButton_Click(object sender, RoutedEventArgs e)
+        {
+            TransformStoryboard.Begin();
+        }
+
+        private void EaseAnimationButton_Click(object sender, RoutedEventArgs e)
+        {
+            EasingStoryboard.Begin();
+        }
     }
 }
